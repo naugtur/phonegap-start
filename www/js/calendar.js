@@ -1,18 +1,17 @@
 define([], function() {
 
 	var clientId = '170662303220';
-	var $node,
-	scopes = 'https://www.googleapis.com/auth/calendar';
+	var $node, scopes = 'https://www.googleapis.com/auth/calendar';
 
 
 
 	//initializes calendar module, appends its content to given node
 	var init = function($anode) {
-			$node=$anode;
+			$node = $anode;
 			console.log('Some motherfucker started CALENDAR MODULE');
 			$node.find('#login').click(auth);
 
-	};
+		};
 
 
 	var auth = function() {
@@ -35,7 +34,7 @@ define([], function() {
 			console.log('Some motherfucker just LOGGED IN');
 
 			makeApiCall();
-	};
+		};
 
 	var makeApiCall = function() {
 
@@ -54,15 +53,38 @@ define([], function() {
 		};
 
 
-	var listCalendars = function(items){
+	var getSingleEvent = function(calendarId) {
+
+
+			var request = gapi.client.calendar.events.list({
+				'calendarId': calendarId,
+				'q' :'Koncert'
+
+			});
+
+			request.execute(function(resp) {
+				console.log('Some motherfucker just ACQUIRED EVENT INFO ');
+				//TO TUTAJ!
+				//resp.items[0];
+			});
+
+
+		};
+
+	var listCalendars = function(items) {
+
 			$node.append('<ul id="calendarList"></ul>');
 
-		$.each(items,function(num,item){
-			$('#calendarList').append("<li class='calendar'>"+item.summary+"</li>");
 
-		});
 
-	};
+			$.each(items, function(num, item) {
+				$('#calendarList').append("<li data-calid='"+item.id+"' class='calendar'>" + item.summary + "</li>");
+			});
+
+			$('.calendar').click(function() {
+				getSingleEvent($(this).data('calid'));
+			});
+		};
 
 
 	return {
