@@ -112,3 +112,46 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+
+html, body{height:100%;font-family: "Cabin";font-weight:600;};
+
+
+#wrapper {
+    
+    min-height: 100%;
+    background-color:#161616;
+overflow:hidden;
+width:100%;
+height:100%;
+}
+
+#wrapper > div {
+    position:absolute;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
+#login {background-color:#161616; display:none;}
+
+#login > .button {margin-top:50%;}
+
+#calendar {background-color:#161616;}
+
+.order {height:44px; background-color:#161616; line-height:44px; color:white;font-size:12px;margin:0 auto;text-align:center;border-bottom:1px solid #15517c;border-right:9px solid #358b40;}
+
+#calendarList li {padding:20px;border-bottom:1px solid #15517c; }
+
+#calendarList li:nth-child(1) {padding:20px;border-bottom:1px solid #15517c;border-right:9px solid #5e334e; }
+#calendarList li:nth-child(2) {padding:20px;border-bottom:1px solid #15517c;border-right:9px solid #dd8045; }
+#calendarList li:nth-child(3) {padding:20px;border-bottom:1px solid #15517c;border-right:9px solid #ebd54c; }
+#calendarList li:nth-child(4) {padding:20px;border-bottom:1px solid #15517c;border-right:9px solid #a7231f; }
+#calendarList li:nth-child(5) {padding:20px;border-bottom:1px solid #15517c;border-right:9px solid #6e1a4e; }
+
+border-right:9px solid #5e334e;
+
+#calendarList img{float:left;}
+#calendarList h3 {font-size: 18px;color:white;display:inline;line-height: 44px;margin-left:15px;}
+
+ul{list-style: none;padding:0; margin:0;}
