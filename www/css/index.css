@@ -156,9 +156,9 @@ border-right:9px solid #5e334e;
 
 ul{list-style: none;padding:0; margin:0;}
 
-#event{margin-left:0%;background-image:url(../img/background.png);}
+#event{margin-left:0%;background-image:url(../img/background.png); background-image:no; width:320px;height:480px;}
 
-#track{margin-left:100%;}
+#track{display:none;}
 
 .name:{height:144px; background-color:#black; line-height:44px; color:white;font-size:12px;margin:0 auto;text-align:center;border-bottom:1px solid #15517c;border-right:9px solid #358b40;}
 .place{}
