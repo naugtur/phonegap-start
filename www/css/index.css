@@ -137,7 +137,7 @@ height:100%;
 
 #login > .button {margin-top:50%;}
 
-#calendar {background-color:#161616;}
+#calendar {background-color:#191921;display:none;}
 
 .order {height:44px; background-color:#161616; line-height:44px; color:white;font-size:12px;margin:0 auto;text-align:center;border-bottom:1px solid #15517c;border-right:9px solid #358b40;}
 
@@ -151,7 +151,14 @@ height:100%;
 
 border-right:9px solid #5e334e;
 
-#calendarList img{float:left;}
+#calendarList img {float:left;}
 #calendarList h3 {font-size: 18px;color:white;display:inline;line-height: 44px;margin-left:15px;}
 
 ul{list-style: none;padding:0; margin:0;}
+
+#event{margin-left:0%;background-image:url(../img/background.png);}
+
+#track{margin-left:100%;}
+
+.name:{height:144px; background-color:#black; line-height:44px; color:white;font-size:12px;margin:0 auto;text-align:center;border-bottom:1px solid #15517c;border-right:9px solid #358b40;}
+.place{}
