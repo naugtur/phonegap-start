@@ -17,26 +17,38 @@
  * under the License.
  */
 var app = {
-    initialize: function() {
-        this.bind();
-    },
-    bind: function() {
-        document.addEventListener('deviceready', this.deviceready, false);
-    },
-    deviceready: function() {
-        // This is an event handler function, which means the scope is the event.
-        // So, we must explicitly called `app.report()` instead of `this.report()`.
-        app.report('deviceready');
-    },
-    report: function(id) {
-        // Report the event in the console
-        console.log("Report: " + id);
+  initialize: function() {
+    this.bind();
+  },
+  bind: function() {
+    document.addEventListener('deviceready', this.deviceready, false);
+  },
+  deviceready: function() {
+    // This is an event handler function, which means the scope is the event.
+    // So, we must explicitly called `app.report()` instead of `this.report()`.
+    app.recorder()
 
-        // Toggle the state from "pending" to "complete" for the reported ID.
-        // Accomplished by adding .hide to the pending element and removing
-        // .hide from the complete element.
-        document.querySelector('#' + id + ' .pending').className += ' hide';
-        var completeElem = document.querySelector('#' + id + ' .complete');
-        completeElem.className = completeElem.className.split('hide').join('');
-    }
+  },
+  recorder: function() {
+
+    var recB = document.querySelector('#rec');
+
+    recB.addEventListener('click', app.recstart, false);
+
+  },
+  recstart: function(e) {
+    var captureError = function(error) {
+        navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+      };
+    navigator.device.capture.captureAudio(function(mediaFiles) {
+      var i, path, len;
+      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        // do something interesting with the file
+        navigator.notification.alert('filepath of the recording '+path)
+      }
+    }, captureError, {
+      limit: 2
+    });
+  }
 };
