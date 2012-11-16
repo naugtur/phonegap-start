@@ -26,29 +26,25 @@ var app = {
   deviceready: function() {
     // This is an event handler function, which means the scope is the event.
     // So, we must explicitly called `app.report()` instead of `this.report()`.
-    app.recorder()
+    app.shaker()
 
   },
-  recorder: function() {
+  shaker: function() {
+    var el = document.querySelector('#shaker');
 
-    var recB = document.querySelector('#rec');
+    function onSuccess(acceleration) {
+      el.innerHTML = ('Acceleration X: ' + acceleration.x + '<br>' + 'Acceleration Y: ' + acceleration.y + '<br>' + 'Acceleration Z: ' + acceleration.z + '<br>' + 'Timestamp: ' + acceleration.timestamp + '<br>');
+    };
 
-    recB.addEventListener('click', app.recstart, false);
+    function onError() {
+      el.innerHTML = 'error';
+    };
 
-  },
-  recstart: function(e) {
-    var captureError = function(error) {
-        navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-      };
-    navigator.device.capture.captureAudio(function(mediaFiles) {
-      var i, path, len;
-      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-        path = mediaFiles[i].fullPath;
-        // do something interesting with the file
-        navigator.notification.alert('filepath of the recording '+path)
-      }
-    }, captureError, {
-      limit: 2
-    });
+    var options = {
+      frequency: 700
+    }; // Update every 3 seconds
+    var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
   }
 };
+
+
