@@ -12,7 +12,7 @@ require(['calendar'], function(Calendar) {
 
 
   document.addEventListener('deviceready', deviceReady, false);
-  window.addEventListener('DOMContentLoaded', init, false);
+  $(init); //awww, so nice
 
 
 
