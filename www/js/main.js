@@ -12,10 +12,8 @@ require(['calendar'], function(Calendar) {
 
 	}
 
-
-	document.addEventListener('deviceready', deviceReady, false);
-	window.addEventListener('DOMContentLoaded', init, false);
-
+  document.addEventListener('deviceready', deviceReady, false);
+  $(init); //awww, so nice
 
 
 });
