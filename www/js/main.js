@@ -1,7 +1,3 @@
-require.config({
-  baseUrl: "/js/",
-});
-
 require(['calendar'], function(Calendar) {
 
   //in case we need it for anything
@@ -20,4 +16,4 @@ require(['calendar'], function(Calendar) {
 
 
 
-}
+});
