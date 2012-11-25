@@ -1,13 +1,14 @@
 define([], function() {
 
 	var clientId = '170662303220';
-	var scopes = 'https://www.googleapis.com/auth/calendar';
+	var $node,
+	scopes = 'https://www.googleapis.com/auth/calendar';
 
 
 
 	//initializes calendar module, appends its content to given node
-	var init = function($node) {
-
+	var init = function($anode) {
+			$node=$anode;
 			console.log('Some motherfucker started CALENDAR MODULE');
 			$node.find('#login').click(auth);
 
@@ -47,10 +48,21 @@ define([], function() {
 
 				request.execute(function(resp) {
 					console.log('Some motherfucker just EXECUTED REQUEST');
-					console.log(resp);
+					listCalendars(resp.items);
 				});
 			});
 		};
+
+
+	var listCalendars = function(items){
+			$node.append('<ul id="calendarList"></ul>');
+
+		$.each(items,function(num,item){
+			$('#calendarList').append("<li class='calendar'>"+item.summary+"</li>");
+
+		});
+
+	};
 
 
 	return {
